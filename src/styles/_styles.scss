@@ -1,0 +1,45 @@
+//--------VARIABLES-------
+$primary: rgba(23, 190, 187, 1);
+$secondary: rgba(240, 166, 202, 1);
+$text-color: rgba(255, 255, 255, 1);
+
+//-----------MIXINS---------
+@mixin posCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+  }
+}
+@mixin triangle($color, $size, $direction) {
+  width: 0;
+  height: 0;
+  @if $direction == "up" {
+    border-right: ($size + px) solid transparent;
+    border-left: ($size + px) solid transparent;
+    border-bottom: ($size + px) solid $color;
+  }
+  @if $direction == "down" {
+    border-right: ($size + px) solid transparent;
+    border-left: ($size + px) solid transparent;
+    border-top: ($size + px) solid $color;
+  }
+  @if $direction == "right" {
+    border-top: ($size + px) solid transparent;
+    border-bottom: ($size + px) solid transparent;
+    border-left: ($size + px) solid $color;
+  }
+  @if $direction == "left" {
+    border-top: ($size + px) solid transparent;
+    border-bottom: ($size + px) solid transparent;
+    border-right: ($size + px) solid $color;
+  }
+}

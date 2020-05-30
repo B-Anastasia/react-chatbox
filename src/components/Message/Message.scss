@@ -1,0 +1,74 @@
+@import "../../styles/styles";
+
+.chatbox__message {
+  &:nth-of-type(odd) {
+    align-self: flex-start;
+
+    .chatbox__message__ind_message {
+      &:after {
+        content: "";
+        position: absolute;
+        margin: 6.9em -1.62em;
+        @include triangle(rgba(255, 255, 255, 0.2), 10, left);
+      }
+    }
+  }
+  &:nth-of-type(even) {
+    grid-template-columns: minmax(20em, 25em) 1fr;
+    align-self: flex-end;
+    .chatbox__message__ind_message {
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
+    .avatar {
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
+    .chatbox__message__ind_message {
+      &:after {
+        content: "";
+        position: absolute;
+        margin: 6.9em 20.7em;
+        @include triangle(rgba(255, 255, 255, 0.2), 10, right);
+      }
+    }
+  }
+}
+
+.chatbox__message {
+  width: 75%;
+  margin: 3em 0;
+  display: grid;
+  grid-template-columns: 1fr minmax(20em, 25em);
+  grid-template-rows: auto;
+  grid-gap: 2em;
+
+  & span:not(:last-child) {
+    margin: 0.5em 0;
+  }
+}
+
+.avatar {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  align-self: end;
+}
+
+.chatbox__message__ind_message {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1em;
+  border-radius: 5px;
+  color: $text-color;
+  display: flex;
+  flex-direction: column;
+  grid-row: 1/2;
+
+  span:first-child {
+    font-size: 1.1em;
+  }
+
+  span:last-child {
+    text-align: end;
+    font-size: 0.9em;
+  }
+}
