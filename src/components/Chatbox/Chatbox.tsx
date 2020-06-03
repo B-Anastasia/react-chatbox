@@ -1,18 +1,10 @@
 import React from "react";
 import Message from "../Message";
 import "./Chatbox.scss";
-
-export type MessagesPropsType = {
-  id: number;
-  img: string;
-  name: string;
-  img_name: string;
-  text: string;
-  time: string;
-};
+import { IMessagePropsType } from "../App/App";
 
 type ChatboxPropsType = {
-  messages: MessagesPropsType[];
+  messages: Array<IMessagePropsType>;
 };
 
 const Chatbox: React.FC<ChatboxPropsType> = (props) => {

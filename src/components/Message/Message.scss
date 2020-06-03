@@ -63,6 +63,10 @@
   flex-direction: column;
   grid-row: 1/2;
 
+  .text {
+    word-wrap: break-word;
+  }
+
   span:first-child {
     font-size: 1.1em;
   }

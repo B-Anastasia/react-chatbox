@@ -1,10 +1,10 @@
 import React from "react";
 import "./Message.scss";
 import Avatar from "../Avatar";
-import { MessagesPropsType } from "../Chatbox/Chatbox";
+import { IMessagePropsType } from "../App/App";
 
 interface MessagePropsType {
-  message: MessagesPropsType;
+  message: IMessagePropsType;
 }
 
 const Message: React.FC<MessagePropsType> = ({ message }) => {
@@ -16,7 +16,7 @@ const Message: React.FC<MessagePropsType> = ({ message }) => {
       </div>
       <div className={"chatbox__message__ind_message"}>
         <span>{name}</span>
-        <span>{text}</span>
+        <span className={"text"}>{text}</span>
         <span>{time}</span>
       </div>
     </div>
