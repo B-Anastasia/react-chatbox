@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import scss from "./App.module.scss";
-import Chatbox from "../Chatbox";
 import TodoList from "../TodoList";
-
+import "./App.scss";
+import Chatbox from "../Chatbox";
 export type IMessagePropsType = {
   id: number;
   img: string;
@@ -12,11 +11,15 @@ export type IMessagePropsType = {
   time: string;
 };
 
-export type ITaskPropsType = {
+export type ITask = {
   id: number;
   title: string;
-  priority: string;
+  priority: "high" | "low" | "medium";
+  isDone: boolean;
 };
+
+export type Priority = "high" | "medium" | "low" | "all";
+export type FilterType = "all" | "done" | "undone";
 
 function App() {
   const [messages, setMessages] = useState<Array<IMessagePropsType>>([
@@ -42,17 +45,50 @@ function App() {
       time: "11:10",
     },
   ]);
-  const [tasks, setTasks] = useState<Array<ITaskPropsType>>([
-    { id: 3, title: "Learn React", priority: "high" },
-    { id: 4, title: "Sleep", priority: "low" },
-    { id: 5, title: "Buy new jeans", priority: "medium" },
-    { id: 6, title: "Buy fish", priority: "medium" },
+  const [tasks, setTasks] = useState<Array<ITask>>([
+    { id: 3, title: "Learn React", priority: "high", isDone: true },
+    { id: 4, title: "Sleep", priority: "low", isDone: false },
+    { id: 5, title: "Buy new jeans", priority: "medium", isDone: true },
+    { id: 6, title: "Buy fish", priority: "medium", isDone: false },
   ]);
 
+  const [priority, setPriority] = useState<Priority>("all");
+  const [filter, setFilter] = useState<FilterType>("all");
+
+  function showTasksPriority(val: Priority) {
+    setPriority(val);
+  }
+
+  function showFilterTasks(filter: FilterType) {
+    setFilter(filter);
+  }
+
+  // const showTasksPriority = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const newValue = e.target.value;
+  //   setPriority(newValue);
+  // };
+
+  let priorityTasks;
+  priority !== "all"
+    ? (priorityTasks = tasks.filter((t) => t.priority === priority))
+    : (priorityTasks = tasks);
+
+  let filteredTasks;
+  filter === "done"
+    ? (filteredTasks = priorityTasks.filter((t) => t.isDone))
+    : filter === "undone"
+    ? (filteredTasks = priorityTasks.filter((t) => !t.isDone))
+    : (filteredTasks = priorityTasks);
+  console.log(filteredTasks);
   return (
-    <div className={scss.app}>
+    <div className="app">
       <Chatbox messages={messages} />
-      <TodoList tasks={tasks} />
+      <TodoList
+        tasks={filteredTasks}
+        priority={priority}
+        showTasksPriority={showTasksPriority}
+        showFilterTasks={showFilterTasks}
+      />
     </div>
   );
 }

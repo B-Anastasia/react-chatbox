@@ -1,5 +1,5 @@
 import React from "react";
-import scss from "../Avatar/Avatar.module.scss";
+import scss from "./Avatar.module.scss";
 
 type AvatarPropsType = {
   img: string;

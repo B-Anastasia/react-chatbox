@@ -1,17 +1,27 @@
 import React from "react";
 import scss from "./TodoList.module.scss";
-import { ITaskPropsType } from "../App/App";
+import { FilterType, ITask, Priority } from "../App/App";
+import Task from "./Task";
+import FilterRow from "./FliterRow";
 
 type ITodoListPropsType = {
-  tasks: Array<ITaskPropsType>;
+  tasks: Array<ITask>;
+  priority: Priority;
+  showTasksPriority: (val: Priority) => void;
+  showFilterTasks: (filter: FilterType) => void;
 };
 
 const TodoList: React.FC<ITodoListPropsType> = (props) => {
-  const tasks = props.tasks.map((el) => <div key={el.id}>{el.title}</div>);
+  const tasks = props.tasks.map((el) => <Task task={el} key={el.id} />);
   return (
     <div className={scss.todos}>
       <h1>TodoList</h1>
-      {tasks}
+      <FilterRow
+        priority={props.priority}
+        showTasksPriority={props.showTasksPriority}
+        showFilterTasks={props.showFilterTasks}
+      />
+      <ul className={scss.todos__list}>{tasks}</ul>
     </div>
   );
 };

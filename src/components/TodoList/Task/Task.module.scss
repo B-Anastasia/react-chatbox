@@ -1,0 +1,42 @@
+.task {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 40% repeat(2, 2fr) repeat(2, 3.5em);
+  gap: 1em;
+  grid-column: 1/-1;
+
+  &__title {
+    background-color: white;
+    //width: 20em;
+    border-left: 3px solid blueviolet;
+    text-align: left;
+    padding: 1em;
+    grid-column: 1/2;
+    border-radius: 0 4px 4px 0;
+  }
+
+  input[type="checkbox"] {
+    grid-column: 4/5;
+    background-color: lightgray;
+    border-radius: 4px;
+    appearance: none;
+    outline: 0;
+    cursor: pointer;
+
+    &:checked {
+      grid-column: 4/5;
+      display: inline-block;
+      background-image: url(check.svg);
+      background-size: cover;
+      background-color: rgba(211, 211, 211, 0.4);
+    }
+  }
+
+  .task__btn {
+    grid-column: 5/6;
+    background-color: #e57676;
+    padding: 0;
+    margin: 0;
+    width: auto;
+  }
+}
