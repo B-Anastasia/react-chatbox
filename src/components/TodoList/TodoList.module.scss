@@ -6,6 +6,7 @@
   grid-template-rows: repeat(5, auto);
   grid-template-columns: 40% 1fr;
   gap: 1em;
+  padding-top: 10em;
 
   h1 {
     grid-row: 1/2;

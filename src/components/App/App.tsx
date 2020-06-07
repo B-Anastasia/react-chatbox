@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import TodoList from "../TodoList";
 import "./App.scss";
-import Chatbox from "../Chatbox";
+
+
 export type IMessagePropsType = {
   id: number;
   img: string;
@@ -19,6 +20,7 @@ export type ITask = {
 };
 
 export type Priority = "high" | "medium" | "low" | "all";
+
 export type FilterType = "all" | "done" | "undone";
 
 function App() {
@@ -63,10 +65,20 @@ function App() {
     setFilter(filter);
   }
 
-  // const showTasksPriority = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const newValue = e.target.value;
-  //   setPriority(newValue);
-  // };
+  function onDeleteTask(id: number) {
+    const newArr = tasks.filter((t) => t.id !== id);
+    setTasks(newArr);
+  }
+
+  function onDoneTask(id: number) {
+    const newArr = tasks.map((t, index, array) => {
+      if (t.id === id) {
+        return { ...t, isDone: !t.isDone };
+      }
+      return { ...t };
+    });
+    setTasks(newArr);
+  }
 
   let priorityTasks;
   priority !== "all"
@@ -79,15 +91,15 @@ function App() {
     : filter === "undone"
     ? (filteredTasks = priorityTasks.filter((t) => !t.isDone))
     : (filteredTasks = priorityTasks);
-  console.log(filteredTasks);
   return (
     <div className="app">
-      <Chatbox messages={messages} />
       <TodoList
         tasks={filteredTasks}
         priority={priority}
         showTasksPriority={showTasksPriority}
         showFilterTasks={showFilterTasks}
+        onDeleteTask={onDeleteTask}
+        onDoneTask={onDoneTask}
       />
     </div>
   );

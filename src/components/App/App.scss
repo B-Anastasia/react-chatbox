@@ -4,6 +4,11 @@
   position: relative;
   background: linear-gradient(120deg, $primary, $secondary);
   overflow: hidden;
+  min-height: 100vh;
+  //display: grid;
+  //grid-template-columns: 100%;
+  //grid-template-rows: auto;
+  //align-items: center;
 }
 .btn {
   border: none;

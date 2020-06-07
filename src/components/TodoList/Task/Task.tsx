@@ -6,22 +6,34 @@ import IsDone from "./IsDone/IsDone";
 
 type ITaskPropsType = {
   task: ITask;
+  onDeleteTask: (id: number) => void;
+  onDoneTask: (id: number) => void;
 };
 
 const Task: FC<ITaskPropsType> = (props) => {
   const { id, title, priority, isDone } = props.task;
+  const taskName = isDone ? (
+    <div className={scss.task__title + " " + scss.crossed}>{title}</div>
+  ) : (
+    <div className={scss.task__title}>{title}</div>
+  );
   return (
     <li className={scss.task} key={id}>
-      <div className={scss.task__title}>{title}</div>
+      {taskName}
       <Priority priority={priority} />
       <IsDone isDone={isDone} />
       <input
         type="checkbox"
-        id={"check"}
-        className={`${scss.task__check} ${scss.crossed}`}
+        className={scss.task__check}
         checked={isDone}
+        onChange={() => props.onDoneTask(id)}
       />
-      <button className={`btn ${scss.task__btn}`}>x</button>
+      <button
+        className={`btn ${scss.task__btn}`}
+        onClick={() => props.onDeleteTask(id)}
+      >
+        x
+      </button>
     </li>
   );
 };

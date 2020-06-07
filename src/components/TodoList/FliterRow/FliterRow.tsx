@@ -8,19 +8,17 @@ type FilterRow = {
   showFilterTasks: (filter: FilterType) => void;
 };
 
-const FilterRow: FC<FilterRow> = ({
-  showFilterTasks,
-  showTasksPriority,
-  priority,
-}) => {
+const FilterRow: FC<FilterRow> = (props) => {
+  const { showFilterTasks, showTasksPriority, priority } = props;
+  const toChoosePriorityFilter = (e: ChangeEvent<HTMLSelectElement>) => {
+    showTasksPriority(e.currentTarget.value as Priority);
+  };
   return (
     <div className={scss.filterRow}>
       <select
         value={priority}
         className={`${scss.filterRow__priority} btn border`}
-        onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-          showTasksPriority(event.target.value as Priority);
-        }}
+        onChange={toChoosePriorityFilter}
       >
         <option value="all">All Priorities</option>
         <option value="low">Low</option>

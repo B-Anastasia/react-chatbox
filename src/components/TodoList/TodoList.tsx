@@ -9,10 +9,20 @@ type ITodoListPropsType = {
   priority: Priority;
   showTasksPriority: (val: Priority) => void;
   showFilterTasks: (filter: FilterType) => void;
+  onDeleteTask: (id: number) => void;
+  onDoneTask: (id: number) => void;
 };
 
 const TodoList: React.FC<ITodoListPropsType> = (props) => {
-  const tasks = props.tasks.map((el) => <Task task={el} key={el.id} />);
+  const tasks = props.tasks.map((el) => (
+    <Task
+      onDeleteTask={props.onDeleteTask}
+      onDoneTask={props.onDoneTask}
+      task={el}
+      key={el.id}
+    />
+  ));
+
   return (
     <div className={scss.todos}>
       <h1>TodoList</h1>
