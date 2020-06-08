@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import TodoList from "../TodoList";
 import "./App.scss";
 
-
 export type IMessagePropsType = {
   id: number;
   img: string;
@@ -80,17 +79,16 @@ function App() {
     setTasks(newArr);
   }
 
-  let priorityTasks;
-  priority !== "all"
-    ? (priorityTasks = tasks.filter((t) => t.priority === priority))
-    : (priorityTasks = tasks);
+  let priorityTasks =
+    priority !== "all" ? tasks.filter((t) => t.priority === priority) : tasks;
 
-  let filteredTasks;
-  filter === "done"
-    ? (filteredTasks = priorityTasks.filter((t) => t.isDone))
-    : filter === "undone"
-    ? (filteredTasks = priorityTasks.filter((t) => !t.isDone))
-    : (filteredTasks = priorityTasks);
+  let filteredTasks =
+    filter === "done"
+      ? priorityTasks.filter((t) => t.isDone)
+      : filter === "undone"
+      ? priorityTasks.filter((t) => !t.isDone)
+      : priorityTasks;
+
   return (
     <div className="app">
       <TodoList
