@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import TodoList from "../TodoList";
 import "./App.scss";
+import InputGreeting from "../InputGreeting";
 
 export type IMessagePropsType = {
   id: number;
@@ -91,6 +91,7 @@ function App() {
 
   return (
     <div className="app">
+      {/*  <Chatbox messages={messages} />
       <TodoList
         tasks={filteredTasks}
         priority={priority}
@@ -98,7 +99,8 @@ function App() {
         showFilterTasks={showFilterTasks}
         onDeleteTask={onDeleteTask}
         onDoneTask={onDoneTask}
-      />
+      />*/}
+      <InputGreeting />
     </div>
   );
 }
