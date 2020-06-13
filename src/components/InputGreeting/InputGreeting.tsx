@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import scss from "./InputGreeting.module.scss";
 import { v1 } from "uuid";
+import Count from "./Count/Count";
+import InputValue from "./InputValue/InputValue";
 
-type ArrayType = {
+export type ArrayType = {
   id: string;
   name: string;
 };
@@ -11,13 +13,23 @@ function InputGreeting() {
   let [value, setValue] = useState<string>("");
   let [arr, setArr] = useState<Array<ArrayType>>([]);
   let [count, setCount] = useState<number>();
+
   const onNewLetter = (value: string) => {
     setValue(value);
+  };
+
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onNewLetter(e.currentTarget.value);
+  };
+
+  const onKeySubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    e.charCode === 13 && onSubmitValue();
   };
 
   const onAlertGreeting = (name: string) => {
     alert(`Welcome ${name}`);
   };
+
   const correctName = (name: string) => {
     return name
       .toLowerCase()
@@ -41,32 +53,28 @@ function InputGreeting() {
     onAlertGreeting(newName);
   };
 
+  const onFilterArr = (id: string) => {
+    let filterArr = arr.filter((n) => n.id !== id);
+    setArr(filterArr);
+    setCount(filterArr.length);
+  };
+
   return (
     <div className={scss.form}>
       <div className={`${scss.form__group} ${scss.field}`}>
-        <input
-          type="input"
+        <InputValue
           value={value}
-          className={scss.form__field}
-          placeholder="Name"
-          name="name"
-          id="name"
-          required
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            onNewLetter(e.currentTarget.value);
-          }}
-          onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) =>
-            e.charCode === 13 && onSubmitValue()
-          }
+          onChangeInput={onChangeInput}
+          onKeySubmit={onKeySubmit}
         />
-        <label htmlFor="name" className={scss.form__label}>
-          Name
-        </label>
-        <button className={`${scss.btn} btn`} onClick={onSubmitValue}>
+        <button
+          className={`${scss.btn} ${scss.btn__add} btn`}
+          onClick={onSubmitValue}
+        >
           <span>Add</span>
         </button>
       </div>
-      <span className={scss.count}>{count}</span>
+      <Count count={count} arr={arr} onFilterArr={onFilterArr} />
     </div>
   );
 }

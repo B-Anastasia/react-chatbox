@@ -2,6 +2,7 @@ $primary: rgba(17, 153, 142, 0.42);
 $secondary: #38ef7d;
 $white: #fff;
 $gray: #fafafa;
+
 .form {
   width: 100%;
   min-height: 100vh;
@@ -9,27 +10,41 @@ $gray: #fafafa;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  div {
+    position: relative;
+    padding: 1em 0 1em 0;
+  }
 }
 .count {
-  display: block;
-  text-align: left;
-  margin-top: 1rem;
   font-weight: 700;
   color: $white;
-  width: 50%;
+
+  &:nth-child(n) {
+    width: 50%;
+  }
+  span {
+    display: block;
+  }
 }
 .btn {
   background-color: transparent;
-  transition: all ease-in 2s;
-  position: absolute;
-  right: 0;
-  bottom: 1px;
+  transition: all ease-in 1s;
+  color: white;
   padding: 1em;
+  width: auto;
   //filter: blur(10px);
-  span {
-    color: white;
-    font-size: 1rem;
+  &__add {
+    position: absolute;
+    right: 0;
+    bottom: 18px;
   }
+  &__del {
+    position: absolute;
+    right: 0;
+    bottom: 1px;
+  }
+
   &:hover {
     background-color: rgba(17, 153, 142, 0.42);
   }
@@ -39,7 +54,6 @@ $gray: #fafafa;
   padding: 15px 0 0;
   margin-top: 10px;
   width: 50%;
-  //border-bottom: 2px solid $gray;
   display: flex;
 }
 
@@ -89,8 +103,12 @@ $gray: #fafafa;
   font-weight: 700;
   border-width: 3px;
   border-image: linear-gradient(to right, $primary, $secondary);
-  //border-image-slice: 1;
 }
+
+.form__field:focus {
+  border-image-slice: 1;
+}
+
 /* reset input */
 .form__field {
   &:required,
