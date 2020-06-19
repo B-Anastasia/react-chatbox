@@ -1,0 +1,171 @@
+// colors
+$input-background: rgba(255, 255, 255, 0.21);
+$input-text-inactive: rgba(120, 129, 161, 0.8);
+$input-text-active: #ffffff;
+//$input-text-active: rgba(222, 135, 135, 0.7);
+
+// gradient animation
+@keyframes gradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+.error {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0.6rem;
+  font-size: 1.2rem;
+  color: #d20f25;
+}
+
+.help {
+  text-align: left;
+  position: absolute;
+  background-color: rgba(222, 135, 135, 0.7);
+  width: auto;
+  min-width: 11rem;
+  padding: 1rem;
+  z-index: 1000;
+  border-radius: 2px;
+  bottom: 4rem;
+  right: -3rem;
+}
+
+.error.field__form:after {
+  content: "";
+  position: absolute;
+  height: 1.5px;
+  background-size: 500% auto;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: linear-gradient(
+      to left,
+      #db0e26,
+      #d20f25,
+      #d78d8d,
+      #e65789,
+      #d9687a,
+      #e7295f
+    )
+    0 0;
+  background-size: 500% auto;
+  animation: gradient 4s linear infinite;
+}
+
+.active.field__form:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  height: 2.5px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background: linear-gradient(
+      to right,
+      #b294ff,
+      #57e6e6,
+      #feffb8,
+      #57e6e6,
+      #b294ff,
+      #57e6e6
+    )
+    0 0;
+  background-size: 500% auto;
+  animation: gradient 3s linear infinite;
+}
+
+.field__form {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 60%;
+  margin: 0 auto;
+  border-radius: 2px;
+  padding: 1.4rem 2rem 1.6rem;
+  background: $input-background;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2.5px;
+    background: $input-text-inactive;
+    background-size: 500% auto;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+}
+
+.field__input {
+  color: $input-text-active;
+  font-size: 1.3rem;
+  padding-top: 6px;
+  flex-grow: 1;
+  vertical-align: middle;
+  //line-height: 1.8rem;
+
+  /* reset input */
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .field__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.field__input:focus {
+  /*placeholder up*/
+  ~ .field__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $input-text-inactive;
+  }
+}
+
+/*placeholder baseline*/
+.field__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: $input-text-inactive;
+}
+
+.field__error {
+  //display: block;
+}
+
+input {
+  border-style: none;
+  background: transparent;
+  outline: none;
+}
+button {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}

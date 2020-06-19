@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./App.scss";
 import InputGreeting from "../InputGreeting";
+import InputText from "../InputText/InputText";
+import { v1 } from "uuid";
 
 export type IMessagePropsType = {
   id: number;
@@ -79,6 +81,10 @@ function App() {
     setTasks(newArr);
   }
 
+  const onEnterFunc = () => {
+    alert("Your field was added succesfully!");
+  };
+
   let priorityTasks =
     priority !== "all" ? tasks.filter((t) => t.priority === priority) : tasks;
 
@@ -88,7 +94,7 @@ function App() {
       : filter === "undone"
       ? priorityTasks.filter((t) => !t.isDone)
       : priorityTasks;
-
+  const textError = "Field is required!";
   return (
     <div className="app">
       {/*  <Chatbox messages={messages} />
@@ -100,7 +106,37 @@ function App() {
         onDeleteTask={onDeleteTask}
         onDoneTask={onDoneTask}
       />*/}
-      <InputGreeting />
+      {/*<InputGreeting />*/}
+      <div className={"user__form"}>
+        <InputText
+          onEnter={onEnterFunc}
+          error={textError}
+          type="text"
+          placeholder="Name"
+          id={v1()}
+          help={"You need to put your full name"}
+          icon={"?"}
+          // icon={<HelpCircle fill={inputError ? "red" : "grey"} />}
+        />
+        <InputText
+          onEnter={onEnterFunc}
+          error={textError}
+          type="text"
+          placeholder="Name"
+          id={v1()}
+          help={"You need to put your full name"}
+          icon={"?"}
+          // icon={<HelpCircle fill={inputError ? "red" : "grey"} />}
+        />
+        <InputText
+          onEnter={onEnterFunc}
+          type="email"
+          error={textError}
+          placeholder="E-mail"
+          id={v1()}
+          help={"You need to put your real e-mail address"}
+        />
+      </div>
     </div>
   );
 }
