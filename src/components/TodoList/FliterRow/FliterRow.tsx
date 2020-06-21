@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC } from "react";
 import scss from "./FilterRow.module.scss";
-import { FilterType, Priority } from "../../App/App";
+import { FilterType, Priority } from "../TodoList";
 
 type FilterRow = {
   priority: Priority;
@@ -10,6 +10,7 @@ type FilterRow = {
 
 const FilterRow: FC<FilterRow> = (props) => {
   const { showFilterTasks, showTasksPriority, priority } = props;
+
   const toChoosePriorityFilter = (e: ChangeEvent<HTMLSelectElement>) => {
     showTasksPriority(e.currentTarget.value as Priority);
   };

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Message.scss";
-import { IMessagePropsType } from "../../App/App";
 import Avatar from "../Avatar";
+import { IMessagePropsType } from "../Chatbox";
 
 interface MessagePropsType {
   message: IMessagePropsType;

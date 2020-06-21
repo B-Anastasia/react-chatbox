@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { ITask } from "../../App/App";
 import scss from "./Task.module.scss";
 import Priority from "./Priority/Priority";
 import IsDone from "./IsDone/IsDone";
+import { ITask } from "../TodoList";
 
 type ITaskPropsType = {
   task: ITask;

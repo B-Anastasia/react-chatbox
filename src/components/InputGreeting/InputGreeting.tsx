@@ -61,6 +61,15 @@ function InputGreeting() {
 
   return (
     <div className={scss.form}>
+      {/*  <InputText
+        onChangeInput={onChangeInput}
+        onEnter={onSubmitValue}
+        value={value}
+      />
+      <Button onClick={onSubmitValue}>
+        <span>Add</span>
+      </Button>*/}
+      {/*second style of the input with button*/}
       <div className={`${scss.form__group} ${scss.field}`}>
         <InputValue
           value={value}

@@ -1,10 +1,21 @@
-import React from "react";
+import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
 import scss from "../InputGreeting.module.scss";
 
-type IInputValuePropsType = {
+// type IInputValuePropsType = {
+//   value: string;
+// onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+//   onKeySubmit: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+// };
+type IInputValuePropsType = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
   value: string;
-  onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onEnter?: (val: string) => void;
+  error?: string;
+  help?: string;
   onKeySubmit: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const InputValue: React.FC<IInputValuePropsType> = ({

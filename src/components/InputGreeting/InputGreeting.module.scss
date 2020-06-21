@@ -4,7 +4,7 @@ $white: #fff;
 $gray: #fafafa;
 
 .form {
-  width: 100%;
+  width: 30rem;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -12,6 +12,7 @@ $gray: #fafafa;
   flex-direction: column;
 
   div {
+    width: 100%;
     position: relative;
     padding: 1em 0 1em 0;
   }
@@ -21,7 +22,7 @@ $gray: #fafafa;
   color: $white;
 
   &:nth-child(n) {
-    width: 50%;
+    width: 100%;
   }
   span {
     display: block;
