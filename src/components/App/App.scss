@@ -12,10 +12,7 @@ h3 {
   background: linear-gradient(120deg, $primary, $secondary);
   overflow: hidden;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding-top: 100px;
 }
 .container {
   min-width: 40%;

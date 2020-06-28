@@ -1,0 +1,124 @@
+$color: white;
+.nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  color: black;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.64);
+    z-index: 3;
+  }
+
+  &__burger {
+    right: 40px;
+    z-index: 3;
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 20px;
+
+    &:before, &:after {
+      content: '';
+      background-color: $color;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      left: 0;
+      transition: all 0.4s ease 0s;
+    }
+
+    &:before {
+      top: 0
+    }
+
+    &:after {
+      bottom: 0;
+    }
+
+    & span {
+      position: absolute;
+      background-color: $color;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      top: 9px;
+      transition: all 0.3s ease 0s;
+    }
+
+    &.active span {
+      transform: scale(0);
+    }
+
+    &.active:before {
+      transform: rotate(45deg);
+      top: 9px
+    }
+
+    &.active:after {
+      transform: rotate(-45deg);
+      bottom: 9px;
+    }
+  }
+
+  &__body {
+    position: relative;
+    display: flex;
+    height: 80px;
+    justify-content: flex-end;
+    align-items: center;
+
+  }
+
+  &__menu {
+    width: 100%;
+    height: 100%;
+    background-color: #57e6e6;
+    top: -100%;
+    left: 0;
+    position: fixed;
+    transition: all 1s ease 0s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    &.active {
+      top: 0
+    }
+  }
+
+  &__item {
+    //margin: 0 0 0 20px; //inline menu
+    margin-bottom: 20px;
+    color: gray;
+    a {
+      color: gray;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease 0s;
+      &:hover{color: cornflowerblue}
+    }
+    & .activeLink {
+      color: lightcyan;
+    }
+  }
+}
+
+
+  @media only screen and (max-height: 400px) {
+    .nav__menu{
+      padding-top: 100px; //inline -menu
+      display: block;
+      padding-left: 20px;
+      top:-200%;
+    }}
