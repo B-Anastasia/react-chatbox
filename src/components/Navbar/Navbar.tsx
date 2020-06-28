@@ -27,7 +27,7 @@ function Navbar() {
         >
           <div className={scss.nav__item} onClick={isCollapsed}>
             <NavLink to="/pre-junior" activeClassName={scss.activeLink}>
-              PreJunior Page
+              Pre Junior Page
             </NavLink>
           </div>
           <div className={scss.nav__item} onClick={isCollapsed}>
@@ -37,7 +37,7 @@ function Navbar() {
           </div>
           <div className={scss.nav__item} onClick={isCollapsed}>
             <NavLink to="/junior-plus" activeClassName={scss.activeLink}>
-              JuniorPlus Page
+              Junior+ Page
             </NavLink>
           </div>
         </div>
