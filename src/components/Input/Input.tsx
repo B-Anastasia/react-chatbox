@@ -6,18 +6,19 @@ export type InputNyaPropsType = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > & {
-  onEnter?: () => void;
+  onEnter: () => void;
   error?: string;
   help?: string;
-  onChangeInput?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onChangeError?: (val: string) => void;
 };
 
-const Input: React.FC<InputNyaPropsType> = (props) => {
-  const { onEnter, error, help, onChangeInput, ...restProps } = props;
-  const { placeholder, type, value, id, onChangeError } = restProps;
-  const placeholderName = placeholder && placeholder.toLowerCase();
-
+const Input: React.FC<InputNyaPropsType> = ({
+  onEnter,
+  error,
+  help,
+  onChangeError,
+  ...props
+}) => {
   const [active, setActive] = useState<boolean>(false);
 
   let formClass = error
@@ -27,7 +28,6 @@ const Input: React.FC<InputNyaPropsType> = (props) => {
     : scss.field__form;
 
   const onChangeActiveInputHandler = (val: boolean) => () => {
-    console.log(val);
     setActive(val);
     if (active) {
       onChangeError && onChangeError("");
@@ -37,9 +37,7 @@ const Input: React.FC<InputNyaPropsType> = (props) => {
   const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     switch (e.charCode) {
       case 13:
-        if (onEnter) {
-          onEnter();
-        }
+        onEnter();
     }
   };
 
@@ -52,18 +50,11 @@ const Input: React.FC<InputNyaPropsType> = (props) => {
       <div className={formClass}>
         <input
           {...props}
-          type={type}
-          value={value}
           className={scss.field__input}
-          required
-          placeholder={placeholder}
-          name={placeholderName}
-          id={id}
           onKeyPress={onKeyPressHandler}
-          onChange={onChangeInput}
         />
-        <label htmlFor={id} className={scss.field__label}>
-          {placeholder}
+        <label htmlFor={props.id} className={scss.field__label}>
+          {props.placeholder}
         </label>
         {help && <ButtonHelp text={help} error={error} />}
       </div>

@@ -10,6 +10,10 @@ const RegistrationForm = () => {
   const [inputError, setInputError] = useState<string>("");
   let nameRe = /([^\sA-Za-z])+/g;
 
+  // validation form
+  // let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  // let reg = /[0-9]{3}-[0-9]{3}-[0-9]{4}/;
+
   const onEnter = () => {
     alert(`Your field ${textInput} was added succesfully!`);
     setInputError("");
@@ -38,13 +42,12 @@ const RegistrationForm = () => {
   return (
     <div className={scss.user__form}>
       <Input
-        type="text"
+        onEnter={onSubmit}
+        onChange={onChangeInputHandler}
         value={textInput}
         error={inputError}
-        placeholder="Name"
+        placeholder={"Name"}
         id={v1()}
-        onEnter={onSubmit}
-        onChangeInput={onChangeInputHandler}
         onChangeError={setInputError}
       />
       <Button onClick={onSubmit}>

@@ -14,10 +14,8 @@ $input-text-active: #ffffff;
   }
 }
 .error {
-  //width: 100%;
-  //max-width: 400px;
-  margin: 0 auto;
-  padding: 0.6rem;
+  display: block;
+  text-align: center;
   font-size: 1.2rem;
   color: #d20f25;
   white-space: pre-wrap;
@@ -73,11 +71,12 @@ $input-text-active: #ffffff;
 }
 
 .field__form {
-  width: auto;
+  margin: 0 auto;
+  width: 30rem;
   position: relative;
   display: flex;
   border-radius: 2px;
-  padding: 1.4rem 2rem 1.6rem;
+
   background: $input-background;
   &:after {
     content: "";
@@ -96,9 +95,9 @@ $input-text-active: #ffffff;
 .field__input {
   color: $input-text-active;
   font-size: 1.3rem;
-  padding-top: 6px;
   flex-grow: 1;
   vertical-align: middle;
+  padding: 1.4rem 2rem 1.6rem;
   //line-height: 1.8rem;
 
   /* reset input */
@@ -115,6 +114,7 @@ $input-text-active: #ffffff;
     font-size: 1.3rem;
     cursor: text;
     top: 20px;
+    margin-left: 1.4rem;
   }
 }
 

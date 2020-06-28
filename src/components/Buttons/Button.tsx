@@ -7,13 +7,7 @@ type ButtonPropsType = DetailedHTMLProps<
 > & {};
 
 const Button: React.FC<ButtonPropsType> = ({ ...props }) => {
-  return (
-    <button
-      className={scss.btn + " " + scss.btn__primary}
-      onClick={props.onClick}
-      {...props}
-    />
-  );
+  return <button className={scss.btn + " " + scss.btn__primary} {...props} />;
 };
 
 export default Button;

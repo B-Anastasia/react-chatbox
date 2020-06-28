@@ -3,6 +3,8 @@ import scss from "./InputGreeting.module.scss";
 import { v1 } from "uuid";
 import Count from "./Count/Count";
 import InputValue from "./InputValue/InputValue";
+import Input from "../Input/Input";
+import { Button } from "../Buttons";
 
 export type ArrayType = {
   id: string;
@@ -60,31 +62,36 @@ function InputGreeting() {
   };
 
   return (
-    <div className={scss.form}>
-      {/*  <InputText
-        onChangeInput={onChangeInput}
-        onEnter={onSubmitValue}
-        value={value}
-      />
-      <Button onClick={onSubmitValue}>
-        <span>Add</span>
-      </Button>*/}
-      {/*second style of the input with button*/}
-      <div className={`${scss.form__group} ${scss.field}`}>
-        <InputValue
-          value={value}
-          onChangeInput={onChangeInput}
-          onKeySubmit={onKeySubmit}
-        />
-        <button
-          className={`${scss.btn} ${scss.btn__add} btn`}
-          onClick={onSubmitValue}
-        >
-          <span>Add</span>
-        </button>
+    <React.Fragment>
+      <h3>Hometask #3</h3>
+      <div className={scss.form}>
+        <div className={`${scss.form__group} ${scss.field}`}>
+          <InputValue
+            value={value}
+            onChangeInput={onChangeInput}
+            onKeySubmit={onKeySubmit}
+          />
+          <Button
+            className={`${scss.btn} ${scss.btn__add} btn`}
+            onClick={onSubmitValue}
+          >
+            <span>Add</span>
+          </Button>
+        </div>
+        <Count count={count} arr={arr} onFilterArr={onFilterArr} />
       </div>
-      <Count count={count} arr={arr} onFilterArr={onFilterArr} />
-    </div>
+      <h3>Hometask #4</h3>
+      <div className={scss.form__greet}>
+        <Input
+          onEnter={onSubmitValue}
+          placeholder={"Name"}
+          value={value}
+          onChange={onChangeInput}
+        />
+        <Button onClick={onSubmitValue}>Add</Button>
+        <Count count={count} arr={arr} onFilterArr={onFilterArr} />
+      </div>
+    </React.Fragment>
   );
 }
 
