@@ -41,6 +41,8 @@ const Input: React.FC<InputNyaPropsType> = ({
     }
   };
 
+  const onFocusHandler = () => onChangeError && onChangeError("");
+
   return (
     <div
       onClick={onChangeActiveInputHandler(true)}
@@ -52,6 +54,8 @@ const Input: React.FC<InputNyaPropsType> = ({
           {...props}
           className={scss.field__input}
           onKeyPress={onKeyPressHandler}
+          autoFocus={true}
+          onFocus={onFocusHandler}
         />
         <label htmlFor={props.id} className={scss.field__label}>
           {props.placeholder}

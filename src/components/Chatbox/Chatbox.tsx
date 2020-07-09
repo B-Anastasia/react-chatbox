@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Message from "./Message";
 import "./Chatbox.scss";
 
-type ChatboxPropsType = {
+/*type ChatboxPropsType = {
   messages: Array<IMessagePropsType>;
-};
+};*/
 
 export type IMessagePropsType = {
   id: number;
@@ -16,7 +16,7 @@ export type IMessagePropsType = {
 };
 // const Chatbox: React.FC<ChatboxPropsType> = (props) => {
 const Chatbox: React.FC = () => {
-  const [messages, setMessages] = useState<Array<IMessagePropsType>>([
+  const [messages] = useState<Array<IMessagePropsType>>([
     {
       id: 1,
       img:

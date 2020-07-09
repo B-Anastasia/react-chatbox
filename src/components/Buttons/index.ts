@@ -1,4 +1,4 @@
-import ButtonHelp from "./ButtonHelp.tsx";
+import ButtonHelp from "./ButtonHelp";
 import Button from "./Button";
 
 export { ButtonHelp, Button };

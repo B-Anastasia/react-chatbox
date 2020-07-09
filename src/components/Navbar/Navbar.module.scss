@@ -19,6 +19,7 @@ $color: white;
   }
 
   &__burger {
+    cursor: pointer;
     right: 40px;
     z-index: 3;
     display: block;
@@ -97,7 +98,6 @@ $color: white;
   }
 
   &__item {
-    //margin: 0 0 0 20px; //inline menu
     margin-bottom: 20px;
     color: gray;
     a {

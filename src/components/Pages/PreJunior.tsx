@@ -7,7 +7,7 @@ import RegistrationForm from "../RegistrationForm/RegistrationForm";
 
 function PreJunior() {
   return (
-    <div className={"preJunior"}>
+    <div className={"pages"}>
       <h2>Hometask #1</h2>
       <Chatbox />
       <h2>Hometask #2</h2>
