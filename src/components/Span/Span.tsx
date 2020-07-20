@@ -3,21 +3,8 @@ import EditableSpan from "../common/EditableSpan";
 import scss from "./Span.module.scss";
 import { Button } from "../Buttons";
 
-// функция для сохранения объектов в память браузера (данные в этом хранилище сохраняться даже при перезагрузке компа)
-export function saveState<T>(key: string, state: T) {
-  const stateAsString = JSON.stringify(state);
-  localStorage.setItem(key, stateAsString);
-}
-
-// функция для получения сохранённого объекта в памяти браузера
-export function restoreState<T>(key: string, defaultState: T) {
-  const stateAsString = localStorage.getItem(key);
-  if (stateAsString !== null) defaultState = JSON.parse(stateAsString) as T;
-  return defaultState;
-}
-
+const defaultValue = "This is an editable span";
 function Span() {
-  const defaultValue = "This is an editable span";
   const [value, setValue] = useState<string>(defaultValue);
   const onAddNewValue = () => {
     setValue(value);
@@ -67,3 +54,16 @@ function Span() {
 }
 
 export default Span;
+
+// функция для сохранения объектов в память браузера (данные в этом хранилище сохраняться даже при перезагрузке компа)
+export function saveState<T>(key: string, state: T) {
+  const stateAsString = JSON.stringify(state);
+  localStorage.setItem(key, stateAsString);
+}
+
+// функция для получения сохранённого объекта в памяти браузера
+export function restoreState<T>(key: string, defaultState: T) {
+  const stateAsString = localStorage.getItem(key);
+  if (stateAsString !== null) defaultState = JSON.parse(stateAsString) as T;
+  return defaultState;
+}
