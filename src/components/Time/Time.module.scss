@@ -1,0 +1,19 @@
+.block_time {
+  text-align: center;
+
+  .data {
+    position: absolute;
+  }
+
+  .time {
+    position: relative;
+  }
+
+  .buttons {
+    display: flex;
+  }
+
+  button {
+    margin: 1.1rem;
+  }
+}
