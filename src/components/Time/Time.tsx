@@ -6,7 +6,6 @@ import scss from "./Time.module.scss";
 function Time() {
   const [time, setTime] = useState(moment().format("LTS"));
   const [timerId, setTimerId] = useState<number | null>(null);
-  const [data, setData] = useState(false);
 
   const runIntervalTime = () => {
     const new_timerId = window.setInterval(() => {
@@ -20,14 +19,13 @@ function Time() {
     }
     return;
   };
-  if (data) {
-    setTimeout(() => setData(false), 2000);
-  }
+
   return (
     <div className={`${scss.block_time} container_sm`}>
-      {data && <div className={scss.data}>{moment().format("LL")}</div>}
+      {/*{data && <div className={scss.data}>{moment().format("LL")}</div>}*/}
       <div className={scss.time}>
-        <span onMouseEnter={() => setData(true)}>{time}</span>
+        <span>{time}</span>
+        <div className={scss.data}>{moment().format("LL")}</div>
       </div>
       <div className={scss.buttons}>
         <Button onClick={runIntervalTime}>set interval</Button>
