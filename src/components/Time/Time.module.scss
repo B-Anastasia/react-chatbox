@@ -3,11 +3,13 @@
 
   .buttons {
     display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
   }
 
-  button {
-    margin: 1.1rem;
-  }
+  //button {
+  //  margin: 1.1rem;
+  //}
 
   .time {
     margin: 0 auto;
@@ -96,5 +98,18 @@
 
   .lte8 .time:hover .data {
     display: block;
+  }
+  .active button{
+    background-color: #e81035;
+  }
+  .inactive button:hover{
+    cursor: auto;
+    background-color:#f13a59 ;
+  }
+  .btn{
+    width: 200px;
+    button{
+      width: 100%;
+    }
   }
 }
